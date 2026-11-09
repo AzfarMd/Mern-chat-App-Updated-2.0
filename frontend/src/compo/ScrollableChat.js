@@ -4,6 +4,12 @@ import { isLastMessage, isSameSender, isSameSenderMargin, isSameUser } from '../
 import { ChatState } from '../Context/ChatProvider';
 import { Avatar, Tooltip } from '@chakra-ui/react';
 
+//Displaying sender and receiver messages.
+//Showing user avatars.
+//Grouping consecutive messages from the same person.
+//Automatically scrolling through messages.
+//Displaying sent and read indicators (✓ and ✓✓).
+ 
 const ScrollableChat = ({ messages }) => {
   const { user } = ChatState();
 

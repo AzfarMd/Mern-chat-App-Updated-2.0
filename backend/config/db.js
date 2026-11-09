@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-
+//database takes time,so it handles asynchrnously
 const connectDB = async () => {
   try {
+    //reads the URL
     let mongoURI = process.env.MONGO_URI;
     if (!mongoURI) {
       console.error("Error: MONGO_URI is missing from environment variables!".red.bold);

@@ -6,7 +6,14 @@ import { AddIcon } from '@chakra-ui/icons';
 import ChatLoading from './ChatLoading';
 import { getSender } from '../config/ChatLogics';
 import GroupChatModal from './miscellaneous/GroupChatModal';
+//This is your MyChats.js file. 
+// It is responsible for fetching and displaying all conversations 
+//of the logged-in user in the left sidebar.
 
+//It also allows the user to:
+//- Select an existing chat.
+//- Create a new group chat.
+//- Refresh the chat list when a new chat is created or updated.
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();

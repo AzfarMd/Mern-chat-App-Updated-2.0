@@ -9,15 +9,13 @@ const ChatProvider = ({ children }) => {
   const [notification, setNotification] = useState([]);
   const [chats, setChats] = useState();
 
- 
-  const history = useHistory();
-
+  const history = useHistory();      
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     setUser(userInfo);
     if (!userInfo) history.push("/");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [history]);
+  }, [history]);  
   return (
     <ChatContext.Provider
       value={{
@@ -36,7 +34,8 @@ const ChatProvider = ({ children }) => {
   );
 };
 
-export const ChatState = () => {
+export const ChatState = () => {//instead for passoing func as prop.we 
+  //can pass like this
   return useContext(ChatContext);
 };
 

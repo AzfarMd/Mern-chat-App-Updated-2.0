@@ -21,3 +21,5 @@ root.render(
 );
 
 reportWebVitals();
+//This is used to measure frontend performance metrics, such as page loading and responsiveness.
+//It is optional and does not affect the chat application's core functionality.

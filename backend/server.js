@@ -59,16 +59,15 @@ const io = require("socket.io")(server, {
 
 io.on("connection", (socket) => {
   console.log("connected to socket.io");
-
-  socket.on("setup", (userData) => {
-    socket.join(userData._id); // 👈 KEY CONCEPT!
-    socket.emit("connected");
-  });
+ socket.on("setup",(userData)=>{
+  socket.join(userData._id);
+  socket.emit("connected");
+ }) 
   // when user click on a chat,the socket enters that chat room
   socket.on("join chat", (room) => {
     socket.join(room);
     console.log("UserJoined Room:" + room);
-  });
+  }); 
   //typing showed on frontend as the other person is typing...
   socket.on("typing", (room) => socket.in(room).emit("typing"));
   socket.on("messages read", ({ room, userId }) => {
@@ -81,7 +80,6 @@ io.on("connection", (socket) => {
   socket.on("new message", (newMessageReceived) => {
     const chat = newMessageReceived.chat;
     if (!chat.users) return console.log("chat.users not defined");
-
     // Loop through all users in this chat:
     chat.users.forEach((user) => {
       // 1. If it's the sender, don't send it back to them

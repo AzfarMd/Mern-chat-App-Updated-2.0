@@ -11,6 +11,15 @@ import ScrollableChat from './ScrollableChat';
 import io from 'socket.io-client'
 import Lottie from 'react-lottie'
 import animationData from "../animations/typing.json"
+//It handles the actual messaging functionality:
+//1. Fetching previous messages from MongoDB.
+//2. Establishing a Socket.IO connection.
+//3. Joining a particular chat room.
+//4. Sending messages. 
+//5. Receiving messages in real time.
+//6. Showing typing indicators.
+//7. Updating read receipts.
+//8. Displaying personal and group chat information.
 const ENDPOINT =
   process.env.NODE_ENV === "production"
     ? window.location.origin

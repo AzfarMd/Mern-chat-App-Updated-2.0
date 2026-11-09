@@ -2,7 +2,8 @@ const asyncHandler = require("express-async-handler");
 const Message = require('../models/messageModel');
 const User = require('../models/userModel');
 const Chat = require('../models/chatModel');
-
+//messageController manages message creation, retrieval and read tracking. 
+//It connects the Message Model and Chat Model to implement the core messaging functionality.
 const sendMessage = asyncHandler(async (req, res) => {
     const { content, chatId } = req.body;
 
@@ -11,7 +12,7 @@ const sendMessage = asyncHandler(async (req, res) => {
         return res.sendStatus(400);
     }
     //var newm create the message document
-    var newMessage = {
+    var newMessage = { 
         sender: req.user._id,
         content: content,
         chat: chatId,

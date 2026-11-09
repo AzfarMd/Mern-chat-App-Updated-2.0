@@ -12,7 +12,11 @@ import {
 import Login from "../compo/Authentication/Login";
 import Signup from "../compo/Authentication/Signup";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-
+//This is your Homepage.js file. 
+// It creates the application's landing page, 
+// where users can either log in or create a new account.
+//It also checks whether the user is already logged in 
+// and redirects them to the chat page.
 const Homepage = () => {
   const history = useHistory();
 

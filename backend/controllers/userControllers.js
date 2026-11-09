@@ -3,6 +3,7 @@ const { Error } = require("mongoose");
 const User=require("../models/userModel");
 const generateToken=require("../config/generateToken")
 const registerUser=expressAsyncHandler(async(req,res)=>{
+    //Creates a new account.
     const {name,email,password,pic}=req.body;
     if(!name||!email||!password){
         res.status(400);
@@ -31,6 +32,7 @@ const registerUser=expressAsyncHandler(async(req,res)=>{
     }
 });
 const authUser=expressAsyncHandler(async(req,res)=>{
+    //Authenticates an existing user.
     const {email,password}=req.body;
     const user=await User.findOne({email});
     if(user&&(await user.matchPassword(password))){
@@ -47,6 +49,9 @@ const authUser=expressAsyncHandler(async(req,res)=>{
     }
 })
 const allUsers=expressAsyncHandler(async(req,res)=>{
+    //Searches for other registered users.
+    //Users should be able to find other people to start conversations with, rather than finding themselves.
+    //If the search query is "John", the result should include: "John", "John Doe", "Johnny", etc.
   const keyword=req.query.search?
   {
      $or:[

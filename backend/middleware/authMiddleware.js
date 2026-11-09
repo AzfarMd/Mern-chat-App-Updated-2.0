@@ -27,3 +27,5 @@ const protect = asyncHandler(async (req, res, next) => {
 });
 
 module.exports = { protect };
+//Your protect middleware handles authentication. 
+// Your group-admin checks in chatController handle authorization.

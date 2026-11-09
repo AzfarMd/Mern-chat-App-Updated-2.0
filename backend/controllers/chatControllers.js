@@ -1,6 +1,13 @@
 const expressAsyncHandler = require("express-async-handler");
 const Chat = require("../models/chatModel");
 const User = require("../models/userModel");
+//Chat Controllers are here which contains functions for:- 
+ //Access or create a one-to-one chat.
+//Fetch all chats of a user.
+//Create a group chat.
+//Rename a group.
+//Add a member to a group.
+//Remove a member from a group.
 
 const accessChat = expressAsyncHandler(async (req, res) => {
   const { userId } = req.body;
@@ -16,7 +23,7 @@ const accessChat = expressAsyncHandler(async (req, res) => {
       { users: { $elemMatch: { $eq: req.user._id } } },
       { users: { $elemMatch: { $eq: userId } } }, // ✅ FIXED typo `$eleMatch` → `$elemMatch`
     ],
-  })
+  }) 
     .populate("users", "-password")
     .populate("latestMessage");
 
@@ -28,7 +35,7 @@ const accessChat = expressAsyncHandler(async (req, res) => {
   if (isChat.length > 0) {
     res.send(isChat[0]);
   } else {
-    // Create chat if not exists
+    // Create chat if not exists 
     const chatData = {
       chatName: "sender",
       isGroupChat: false,
